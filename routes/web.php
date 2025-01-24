@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", [\App\Http\Controllers\HomepageController::class , 'index']);
-Route::get("about" , [\App\Http\Controllers\AboutController::class , 'index']);
-Route::get("/contact" , [\App\Http\Controllers\ContactController::class , 'index']);
-Route::get("/admin/all-contacts" , [\App\Http\Controllers\ContactController::class , 'getAllContacts']);
-Route::get("/shop" , [\App\Http\Controllers\ProductsController::class , 'index']);
+Route::get('/', function () {
+    $ocjene = \App\Models\Ocjene::all();
+    return view('welcome' , compact('ocjene'));
+});
+
+Route::view('/dodaj-ocjenu' , 'addGrade');
+Route::post('/add-user-grade' , [\App\Http\Controllers\OcjeneController::class , 'addGrade']);

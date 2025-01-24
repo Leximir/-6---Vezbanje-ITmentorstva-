@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('ocjene', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('subject');
-            $table->text('message');
+            $table->string('predmet' , 64);
+            $table->unsignedInteger('ocjena');
+            $table->string('profesor' , 64);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('ocjenes');
     }
 };
